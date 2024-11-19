@@ -10,14 +10,27 @@
         </tr>
       </thead>
       <tbody>
+          <% total_amount = 0%>
           <% @transactions.each do |transaction| %>
             <tr>
               <td><%= format_date(transaction.transaction_date) %></td>
-              <td><%= transaction.transaction_type %></td>
-              <td><%= transaction.amount %></td>
+              <td><%= I18n.t("transaction_types.#{transaction.transaction_type}") %></td>
+              <% if transaction.transaction_type == "income" %>
+                <td><%= transaction.amount %> 円</td>
+                <% total_amount += transaction.amount%>
+              <% else %>
+                <td>-<%= transaction.amount %> 円</td>
+                <% total_amount -= transaction.amount%>
+              <% end %>
             </tr>
           <% end %>
       </tbody>
+      <tfoot>
+        <tr>
+          <th>合計金額</th>
+          <th></th>
+          <th><%= total_amount %> 円</th>
+      </tfoot>
     </table>
   </div>
 </div>

@@ -1,0 +1,4 @@
+ja:
+  transaction_types:
+    income: "収入"
+    expense: "支出"
