@@ -65,3 +65,5 @@ end
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'bootstrap', '~> 5.1'
 gem 'sassc-rails'
+gem 'pry-byebug'
+gem 'pry'

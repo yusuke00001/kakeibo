@@ -1,7 +1,6 @@
 class TransactionsController < ApplicationController
-
   def index
-    @transactions = Transaction.all.includes(:categories).order(:transaction_date)
+    @transactions = Transaction.all.order(:transaction_date)
   end
   def new
     @transaction = Transaction.new
@@ -12,7 +11,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
     redirect_to transactions_path
     else
-    render :new
+      render :new
     end
   end
 

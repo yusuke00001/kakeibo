@@ -7,6 +7,7 @@
           <th>日付</th>
           <th>種類</th>
           <th>金額</th>
+          <th>カテゴリー</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,11 @@
                 <td>-<%= transaction.amount %> 円</td>
                 <% total_amount -= transaction.amount%>
               <% end %>
+              <td>
+                <% transaction.categories.each do |category| %>
+                  <span><%= category.name %></span>
+                <% end %>
+              </td>
             </tr>
           <% end %>
       </tbody>
