@@ -1,9 +1,8 @@
 class TransactionsController < ApplicationController
 
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.all.includes(:categories).order(:transaction_date)
   end
-
   def new
     @transaction = Transaction.new
   end
