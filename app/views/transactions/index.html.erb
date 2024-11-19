@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <h1>収支一覧</h1>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>種類</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.transaction_date %></td>
+              <td><%= transaction.transaction_type %></td>
+              <td><%= transaction.amount %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
