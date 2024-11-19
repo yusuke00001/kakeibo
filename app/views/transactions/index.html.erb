@@ -12,7 +12,7 @@
       <tbody>
           <% @transactions.each do |transaction| %>
             <tr>
-              <td><%= transaction.transaction_date %></td>
+              <td><%= format_date(transaction.transaction_date) %></td>
               <td><%= transaction.transaction_type %></td>
               <td><%= transaction.amount %></td>
             </tr>
