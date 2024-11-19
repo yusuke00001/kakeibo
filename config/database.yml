@@ -10,6 +10,9 @@ default: &default
 development:
   <<: *default
   database: kakeibo
+test:
+  <<: *default
+  database: kakeibo_test
 production:
   <<: *default
   database: kakeibo_production
