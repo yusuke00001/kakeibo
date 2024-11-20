@@ -33,13 +33,6 @@
           </tr>
         <% end %>
       </tbody>
-      <tfoot>
-        <tr>
-          <th>合計金額</th>
-          <th></th>
-          <th><%= total_amount %> 円</th>
-        </tr>
-      </tfoot>
     </table>
     <div class="pagination>
       <%= paginate @transactions, theme: 'bootstrap-5'%>
