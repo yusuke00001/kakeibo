@@ -11,6 +11,7 @@
         </tr>
       </thead>
       <tbody>
+        <a href="">
           <% total_amount = 0%>
           <% @transactions.each do |transaction| %>
             <tr>
@@ -24,9 +25,7 @@
                 <% total_amount -= transaction.amount%>
               <% end %>
               <td>
-                <% transaction.categories.each do |category| %>
-                  <span><%= category.name %></span>
-                <% end %>
+                <%= link_to "収支詳細", transaction_path(transaction)%>
               </td>
             </tr>
           <% end %>
