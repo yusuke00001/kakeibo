@@ -27,6 +27,7 @@
   </head>
 
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -34,7 +35,7 @@
             <ul class="nav flex-column">
               <%= link_to "収支一覧", transactions_path %><br>
               <%= link_to "家計簿入力フォーム", new_transaction_path %><br>
-              <%= link_to "月ごとの収支合計"%><br>
+              <%= link_to "月ごとの収支合計", monthly_transactions_path %><br>
               <%= link_to "カテゴリーごとの収支合計" %>
             </ul>
           </div>

@@ -1,0 +1,68 @@
+<div class="container">
+  <h1>月別収支グラフ</h1>
+  <select id="graphType" class="form-select mb-4">
+    <option value="income">収入</option>
+    <option value="expense">支出</option>
+    <option value="total">合計</option>
+  </select>
+
+  <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+
+<script>
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const incomeData = <%= @income_values.to_json.html_safe %>;
+  const expenseData = <%= @expense_values.to_json.html_safe %>;
+  const totalData = <%=@total_values.to_json.html_safe %>;
+  const labels = <%= @labels.to_json.html_safe %>;
+
+ document.addEventListener('DOMContentLoaded', function () {
+  const ctx = document.getElementById('myChart').getContext('2d');
+  let chart;
+
+  const renderChart = (type, labels, data) => {
+    if (chart) {
+      chart.destroy(); // 既存のチャートを破棄
+    }
+    const colors = data.map(value => value >= 0 ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)');
+    const borderColors = data.map(value => value >= 0 ? 'rgba(75, 192, 192, 1)' : 'rgba(255, 99, 132, 1)');
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: type === 'income' ? '収入' : type === 'expense' ? '支出' : '合計',
+          data: data,
+          backgroundColor: colors,
+          borderColor: borderColors,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          }
+        }
+      }
+    });
+  };
+
+  // 初期データ (仮)
+  const incomeData = <%= @income_values.to_json.html_safe %>;
+  const expenseData = <%= @expense_values.to_json.html_safe %>;
+  const totalData = <%= @total_values.to_json.html_safe %>;
+  const labels = <%= @labels.to_json.html_safe %>;
+
+  // 初期表示: 収入のグラフ
+  renderChart('income', labels, incomeData);
+
+  // ドロップダウン変更時のイベント
+  document.getElementById('graphType').addEventListener('change', (e) => {
+    const type = e.target.value;
+    const data = type === 'income' ? incomeData : type === 'expense' ? expenseData : totalData;
+    renderChart(type, labels, data);
+  });
+});
+</script>
