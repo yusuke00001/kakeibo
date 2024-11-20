@@ -23,6 +23,12 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
   end
 
+  def destroy
+    @transaction = Transaction.find(params[:id])
+    @transaction.destroy
+    redirect_to transactions_path
+  end
+
   def transaction_params
     params.require(:transaction).permit(:amount, :transaction_type, :transaction_date, :note)
   end

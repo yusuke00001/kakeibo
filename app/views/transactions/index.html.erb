@@ -25,7 +25,7 @@
             <td>
               <div class="d-flex justify-content-center">
                 <%= link_to "収支詳細", transaction_path(transaction), class: "btn btn-primary me-4"%>
-                <%= button_to "削除", transactions_path, method: :delete, class: "btn btn-danger" %>
+                <%= button_to "削除", transaction_path(transaction), method: :delete, class: "btn btn-danger" %>
               </div>
             </td>
           </tr>
