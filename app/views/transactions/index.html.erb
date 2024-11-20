@@ -7,6 +7,7 @@
           <th><i class="fas fa-calendar-alt"></i> 日付</th>
           <th><i class="fas fa-exchange-alt"></i> 種類</th>
           <th><i class="fas fa-yen-sign"></i> 金額</th>
+          <th><i class="fas fa-sticky-note"></i> メモ</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@
               <td>-<%= transaction.amount %> 円</td>
               <% total_amount -= transaction.amount%>
             <% end %>
+            <td><%= transaction.note %></td>
             <td>
               <div class="d-flex justify-content-center">
                 <%= link_to "収支詳細", transaction_path(transaction), class: "btn btn-primary me-4"%>
