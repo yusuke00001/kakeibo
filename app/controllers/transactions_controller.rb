@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all.order(:transaction_date)
+    @transactions = Transaction.all.order(:transaction_date).page(params[:page]).per(10)
   end
 
   def show
