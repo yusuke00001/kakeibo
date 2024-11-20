@@ -9,6 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  */
 @import "bootstrap";
+@import "font-awesome";
 
 .card {
   border-radius: 12px;
@@ -34,4 +35,7 @@
 .btn-primary:hover {
   background-color: #0056b3;
   border-color: #0056b3;
+}
+.detail-label {
+  font-weight: bold;
 }

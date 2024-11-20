@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 500px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+    <div class="card-header bg-primary text-white text-center">
+      <h4 class="mb-0">家計簿編集フォーム</h4>
+    </div>
+      <div class="card-body">
+        <%= form_with(model:@transaction, class: "needs-validation") do |form| %>
+        
+        <div class="mb-3">
+          <%= form.label :transaction_date, '日付',class: "form-label" %>
+          <%= form.date_field :transaction_date, class:"form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :transaction_type, '種類' %>
+          <%= form.select :transaction_type, [["収入","income"],["支出","expense"]], {}, { class: "form-select"} %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :amount, '金額',class:"form-label" %>
+            <div class="input-group">
+              <%= form.number_field :amount,step: 1, placeholder: "金額を入力してください" ,class:"form-control" %>
+              <span class="input-group-text">円</span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :note, 'メモ',class:"form-label" %>
+          <%= form.text_area :note, rows: 3, class: "form-control", placeholder: "メモを記入してください" %>
+        </div>
+
+        <div class="d-grid">
+        <%= form.submit "保存する", class: "btn btn-primary" %>
+        </div>
+      <% end%>
+      </div>
+  </div>
+</div> 

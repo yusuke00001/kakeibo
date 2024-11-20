@@ -2,6 +2,10 @@ class TransactionsController < ApplicationController
   def index
     @transactions = Transaction.all.order(:transaction_date)
   end
+
+  def show
+    @transaction = Transaction.find(params[:id])
+  end
   def new
     @transaction = Transaction.new
   end
@@ -15,7 +19,11 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def edit
+    @transaction = Transaction.find(params[:id])
+  end
+
   def transaction_params
-    params.require(:transaction).permit(:id, :amount, :transaction_type, :transaction_date, :note)
+    params.require(:transaction).permit(:amount, :transaction_type, :transaction_date, :note)
   end
 end

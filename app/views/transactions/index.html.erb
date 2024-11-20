@@ -4,40 +4,40 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>日付</th>
-          <th>種類</th>
-          <th>金額</th>
-          <th>カテゴリー</th>
+          <th><i class="fas fa-calendar-alt"></i> 日付</th>
+          <th><i class="fas fa-exchange-alt"></i> 種類</th>
+          <th><i class="fas fa-yen-sign"></i> 金額</th>
         </tr>
       </thead>
       <tbody>
-          <% total_amount = 0%>
-          <% @transactions.each do |transaction| %>
-            <tr>
-              <td><%= format_date(transaction.transaction_date) %></td>
-              <td><%= I18n.t("transaction_types.#{transaction.transaction_type}") %></td>
-              <% if transaction.transaction_type == "income" %>
-                <td><%= transaction.amount %> 円</td>
-                <% total_amount += transaction.amount%>
-              <% else %>
-                <td>-<%= transaction.amount %> 円</td>
-                <% total_amount -= transaction.amount%>
-              <% end %>
-              <td>
-                <% transaction.categories.each do |category| %>
-                  <span><%= category.name %></span>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+        <% total_amount = 0%>
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td><%= format_date(transaction.transaction_date) %></td>
+            <td><%= I18n.t("transaction_types.#{transaction.transaction_type}") %></td>
+            <% if transaction.transaction_type == "income" %>
+              <td><%= transaction.amount %> 円</td>
+              <% total_amount += transaction.amount%>
+            <% else %>
+              <td>-<%= transaction.amount %> 円</td>
+              <% total_amount -= transaction.amount%>
+            <% end %>
+            <td>
+              <div class="d-flex justify-content-center">
+                <%= link_to "収支詳細", transaction_path(transaction), class: "btn btn-primary me-4"%>
+                <%= button_to "削除", transactions_path, method: :delete, class: "btn btn-danger" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
       <tfoot>
         <tr>
           <th>合計金額</th>
           <th></th>
           <th><%= total_amount %> 円</th>
+        </tr>
       </tfoot>
     </table>
   </div>
 </div>
-#a

@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 500px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); background: linear-gradient(135deg, #f0f8ff, #e6e6fa);">
+    <div class="card-header bg-primary text-white text-center">
+      <h4 class="mb-0">家計簿詳細</h4>
+    </div>
+      <div class="card-body">
+        <div style="font-size: 20px;">
+          <p><span class="detail-label"><i class="fas fa-calendar-alt"></i> 日付 :<%= format_date(@transaction.transaction_date) %></p>
+          <p><span class="detail-label"><i class="fas fa-exchange-alt"></i>種類 :<%= I18n.t("transaction_types.#{@transaction.transaction_type}") %></p>
+          <p><span class="detail-label"><i class="fas fa-yen-sign"></i>金額 :<%= @transaction.amount %>円</p>
+          <p><span class="detail-label"><i class="fas fa-sticky-note"></i>メモ :<%= @transaction.note %></p>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <%= link_to "編集", edit_transaction_path(@transaction), class: "btn btn-primary me-2" %>
+          <%= button_to "削除", transaction_path, method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>
+  </div>
+</div> 

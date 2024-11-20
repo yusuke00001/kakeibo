@@ -126,6 +126,8 @@ GEM
     ffi (1.17.0-x86-linux-gnu)
     ffi (1.17.0-x86_64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
+    font-awesome-sass (6.5.2)
+      sassc (~> 2.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -389,6 +391,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  font-awesome-sass (~> 6.0)
   importmap-rails
   jbuilder
   kamal
