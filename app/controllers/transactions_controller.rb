@@ -48,8 +48,8 @@ class TransactionsController < ApplicationController
     @labels = (1..12).map { |month| "#{month}月" }
 
     # 収支データを月ごとに集計
-    income_date = Transaction.where(transaction_type: 'income').group_by_month(:transaction_date, format: "%m", range: Date.current.beginning_of_year..Date.current.end_of_year).sum(:amount)
-    expense_date = Transaction.where(transaction_type: 'expense').group_by_month(:transaction_date, format: "%m", range: Date.current.beginning_of_year..Date.current.end_of_year).sum(:amount)
+    income_date = Transaction.where(transaction_type: 'income').group_by_month(:transaction_date, format: "%-m", range: Date.current.beginning_of_year..Date.current.end_of_year).sum(:amount)
+    expense_date = Transaction.where(transaction_type: 'expense').group_by_month(:transaction_date, format: "%-m", range: Date.current.beginning_of_year..Date.current.end_of_year).sum(:amount)
     #　収支の合計金額を格納するための新しいハッシュ
     @total_values = {}
     #　収支の合計を計算
