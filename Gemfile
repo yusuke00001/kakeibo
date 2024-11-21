@@ -63,7 +63,7 @@ group :test do
 end
 
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'bootstrap', '~> 5.1'
+gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'
 gem 'pry-byebug'
 gem 'pry'

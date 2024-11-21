@@ -9,6 +9,7 @@
           <p><span class="detail-label"><i class="fas fa-exchange-alt"></i>種類 :<%= I18n.t("transaction_types.#{@transaction.transaction_type}") %></p>
           <p><span class="detail-label"><i class="fas fa-yen-sign"></i>金額 :<%= @transaction.amount %>円</p>
           <p><span class="detail-label"><i class="fas fa-sticky-note"></i>メモ :<%= @transaction.note %></p>
+          <p>カテゴリー :<%= @transaction.categories.map(&:description).join(",") %></p>
         </div>
         <div class="mb-3 d-flex justify-content-center">
           <%= link_to "編集", edit_transaction_path(@transaction), class: "btn btn-primary me-2" %>

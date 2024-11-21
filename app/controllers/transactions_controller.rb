@@ -1,13 +1,14 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all.order(:transaction_date).page(params[:page]).per(10)
+    @transactions = Transaction.includes(:categories).all.order(:transaction_date).page(params[:page]).per(10)
   end
 
   def show
-    @transaction = Transaction.find(params[:id])
+    @transaction = Transaction.includes(:categories).find(params[:id])
   end
   def new
     @transaction = Transaction.new
+    @categories = Category.all
   end
 
   def create
@@ -16,6 +17,7 @@ class TransactionsController < ApplicationController
       redirect_to transactions_path
       flash[:notice] = "作成されました"
     else
+      @categories = Category.all
       render :new
       flash[:alert] = "作成に失敗しました"
     end
@@ -23,6 +25,7 @@ class TransactionsController < ApplicationController
 
   def edit
     @transaction = Transaction.find(params[:id])
+    @categories = Category.all
   end
 
   def update
@@ -74,7 +77,9 @@ class TransactionsController < ApplicationController
     end
   end
 
+  private
+
   def transaction_params
-    params.require(:transaction).permit(:amount, :transaction_type, :transaction_date, :note)
+    params.require(:transaction).permit(:amount, :transaction_type, :transaction_date, :note, category_ids: [])
   end
 end

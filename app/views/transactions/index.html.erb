@@ -8,6 +8,7 @@
           <th><i class="fas fa-exchange-alt"></i> 種類</th>
           <th><i class="fas fa-yen-sign"></i> 金額</th>
           <th><i class="fas fa-sticky-note"></i> メモ</th>
+          <th>カテゴリー</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,7 @@
               <% total_amount -= transaction.amount%>
             <% end %>
             <td><%= transaction.note %></td>
+            <td><%= transaction.categories.map(&:description).join(", ")%></td>
             <td>
               <div class="d-flex justify-content-center">
                 <%= link_to "収支詳細", transaction_path(transaction), class: "btn btn-primary me-4"%>

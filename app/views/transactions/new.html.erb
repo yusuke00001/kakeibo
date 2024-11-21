@@ -29,6 +29,22 @@
           <%= form.text_area :note, rows: 3, class: "form-control", placeholder: "メモを記入してください" %>
         </div>
 
+        <div class="mb-3">
+          <%= form.label :categories, "カテゴリー" %>
+          <%= form.collection_check_boxes :category_ids, @categories, :id, :description do |b| %>
+            <%= b.check_box(class: "form-check-input") %>
+            <%= b.label(clas: "form-check-label") %>
+          <% end %>
+        </div>
+
+        <!-- カテゴリ追加ボタン -->
+        <div class="mb-3">
+          <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#addCategoryModal" data-turbo="false">
+            新しいカテゴリーを追加
+          </button>
+        </div>
+        <% render 'shared/modal' %>
+
         <div class="d-grid">
         <%= form.submit "保存する", class: "btn btn-primary" %>
         </div>
