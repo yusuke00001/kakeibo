@@ -29,13 +29,15 @@ class TransactionsController < ApplicationController
   end
 
   def update
+    @categories = Category.all
     @transaction = Transaction.find(params[:id])
+
     if @transaction.update(transaction_params)
       redirect_to transaction_path(@transaction)
       flash[:notice] = "更新されました"
     else
+      flash.now[:alerts] = @transaction.errors.full_messages
       render :edit
-      flash[:alert] = "更新が失敗しました"
     end
   end
 
