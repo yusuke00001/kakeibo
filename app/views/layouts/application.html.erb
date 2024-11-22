@@ -41,14 +41,17 @@
           </div>
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <% if flash[:notice]%>
+          <% if flash[:notice] %>
             <div class="alert alert-success" role="alert" >
-              <%= flash[:notice]%>
+              <%= flash[:notice] %>
             </div>
           <% end %>
-          <% if flash[:alert]%>
+          
+          <% if flash[:alerts] %>
             <div class="alert alert-danger" role="alert">
-              <%= flash[:alert] %>
+              <% flash[:alerts].each do |message| %>
+                <li><%= message %></li>
+              <% end %>
             </div>
           <% end %>
           <%= yield %>

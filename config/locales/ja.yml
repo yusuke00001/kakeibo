@@ -2,3 +2,10 @@ ja:
   transaction_types:
     income: "収入"
     expense: "支出"
+
+  activerecord:
+    attributes:
+      transaction:
+        transaction_date: "日付"
+        transaction_type: "種類"
+        amount: "金額"

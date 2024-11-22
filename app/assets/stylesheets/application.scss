@@ -39,3 +39,7 @@
 .detail-label {
   font-weight: bold;
 }
+
+.field_with_errors {
+  display: inline-block; /* または元のスタイルに合わせる */
+}

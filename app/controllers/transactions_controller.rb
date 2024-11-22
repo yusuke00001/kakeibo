@@ -18,8 +18,8 @@ class TransactionsController < ApplicationController
       flash[:notice] = "作成されました"
     else
       @categories = Category.all
+      flash.now[:alerts] = @transaction.errors.full_messages
       render :new
-      flash[:alert] = "作成に失敗しました"
     end
   end
 
