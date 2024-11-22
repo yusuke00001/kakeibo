@@ -79,6 +79,10 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def category_totals
+    @category_totals = Transaction.joins(:categories).group("categories.description").sum(:amount)
+  end
+
   private
 
   def transaction_params

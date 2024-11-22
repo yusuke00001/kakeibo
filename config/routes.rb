@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   get 'transactions/monthly', to: 'transactions#monthly', as: 'monthly_transactions'
+  get 'transactions/category_totals', to: 'transactions#category_totals', as: 'category_totals_transactions'
   resources :transactions
 end

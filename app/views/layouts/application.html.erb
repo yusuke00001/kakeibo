@@ -36,7 +36,7 @@
               <%= link_to "収支一覧", transactions_path %><br>
               <%= link_to "家計簿入力フォーム", new_transaction_path %><br>
               <%= link_to "月ごとの収支合計", monthly_transactions_path %><br>
-              <%= link_to "カテゴリーごとの収支合計" %>
+              <%= link_to "カテゴリーごとの収支合計", category_totals_transactions_path %>
             </ul>
           </div>
         </nav>
@@ -46,7 +46,7 @@
               <%= flash[:notice] %>
             </div>
           <% end %>
-          
+
           <% if flash[:alerts] %>
             <div class="alert alert-danger" role="alert">
               <% flash[:alerts].each do |message| %>
