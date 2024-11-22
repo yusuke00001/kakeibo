@@ -30,10 +30,10 @@
         </div>
 
         <div class="mb-3">
-          <%= form.label :categories, "カテゴリー" %>
+          <label>カテゴリー</label>
           <%= form.collection_check_boxes :category_ids, @categories, :id, :description do |b| %>
             <%= b.check_box(class: "form-check-input") %>
-            <%= b.label(clas: "form-check-label") %>
+            <%= b.label(class: "form-check-label") %>
           <% end %>
         </div>
 
