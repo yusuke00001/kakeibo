@@ -1,3 +1,4 @@
+<h1>カテゴリー別収支グラフ</h1>
 <div style="width: 100%; max-width: 600px; margin: 0 auto;">
   <canvas id="categoryChart"></canvas>
 </div>
@@ -8,13 +9,17 @@
 document.addEventListener("DOMContentLoaded", function () {
   const ctx = document.getElementById("categoryChart").getContext("2d");
 
-  // データを取得
+  const categoryData = {
+    "給料": 500000,
+    "飲食": 20000,
+    "趣味": 15000
+  };
+
   const labels = Object.keys(categoryData); // ["給料", "飲食", "趣味"]
   const data = Object.values(categoryData); // [500000, 20000, 15000]
 
-  // グラフを描画
   new Chart(ctx, {
-    type: "pie", // 円グラフ
+    type: "pie",
     data: {
       labels: labels,
       datasets: [
@@ -37,7 +42,24 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     options: {
       responsive: true,
+      plugins: {
+        datalabels: {
+          color: "#000", // ラベルの文字色
+          anchor: "center", // ラベルの位置
+          align: "center",  // ラベルの揃え方
+          formatter: (value, ctx) => {
+            // ラベルの内容をカスタマイズ
+            let sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+            let percentage = ((value / sum) * 100).toFixed(1) + "%";
+            return percentage; // 割合を表示
+          },
+          font: {
+            size: 14, // ラベルの文字サイズ
+          },
+        },
+      },
     },
+    plugins: [ChartDataLabels], // プラグインを登録
   });
 });
 </script>
